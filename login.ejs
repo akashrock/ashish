@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-form {
-	background-color:pink;
-	text-aligne:center;
-
-}
-</style>
-<title>
-</title>
-<link rel=<!-- Latest compiled and minified CSS -->
+<title>Login </title>
+    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <!-- Optional theme -->
@@ -18,10 +10,48 @@ form {
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+    <style>
+        form{
+            background-color: skyblue;
+            margin-top: 40px;
+        }
+    </style>
 </head>
-<body>
-<form>username<input type="text"><br>
-      password<input type="password"><br>
-      <input type="submit" value ="login"><br>
-</form>
+<body><!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+        <div class="row">
+    <form>
+        <div class="col-md-4">
+       User Name<input type="text" class="form-control" required name="uname">
+        Password<input type="password" class="form-control" required name="pwd">
+        <br>
+        <button >LOGIN</button>
+        </div>
+    </form>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
 </body>
+</html>
