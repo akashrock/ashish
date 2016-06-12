@@ -1,9 +1,13 @@
-var express =require('express')
-var app = express()
+var express= require("express")
+var app=express();
 app.get('/',function(req,res)
 {
-res.render('login.ejs')
-res.end()
+	var myarr=["red","green","blue"]
+	res.render('login.ejs',
+	{
+		temp:myarr
+	});
+	res.end();
 })
 app.listen(8080)
-//npm i install express
+console.log("hello ashish");
