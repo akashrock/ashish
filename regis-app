@@ -1,0 +1,41 @@
+var app=angular.module('myApp', ['ngRoute'])
+               .config(['$routeProvider', function($routeProvider) {
+                    $routeProvider.when('/', {
+                        template: 'index.html'
+                    });
+               }]);
+
+   app.controller('myCtrl',function($scope,$http){
+   $scope.myFunc=function(){
+       alert();  
+     $scope.fname;
+     var LastName =$scope.lname;
+     var mobile =$scope.mobile;
+     var password =$scope.password;
+     var textArea =$scope.textArea;
+     var male =$scope.male;
+      var female =$scope.female;
+     var nationality =$scope.nationality;
+
+         $http({
+        method  : 'POST',
+        url     : 'http//:localhost/angu/test.php',
+        data    : $.param($scope.fname),  // pass in data as strings
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Requested-With' : 'XMLHttpRequest'
+        }  // set the headers so angular passing info as form data (not request payload)
+    })
+    .success(function(data, status, headers, config) {
+        //do anything when it success..
+        console.log('works!');
+      })
+    .error(function(data, status, headers, config){
+        //do anything when errors...
+        console.log('errors!');
+    });
+  }
+ 
+
+     
+	
+});
