@@ -1,0 +1,168 @@
+ <?php echo form_open('Welcome/signup',['id'=>'signup']); ?>
+                          <div class="row" id="rowtxt1" >
+                              <div class="col-md-5">
+                                  <input type="text" class="form-control" id="fname" name="firstname" placeholder="First name" aria-required="1"/>
+                                  <span style="color:red" class="error" id="fname_error">What is your first name</span>
+                              </div>
+
+                              <div class="col-md-5">
+                                 <input type="text" class="form-control" id="lname" name="lastname" placeholder="Surname" aria-required="1"/>
+                                 <span style="color:red" class="error" id="lname_error">What is your last name</span>
+                              </div>
+                          </div>
+
+                          <div class="row" id="rowtxt2">
+                               <div class="col-md-10">
+                                   <input type="text" class="form-control" id="email" name="email" placeholder="Email address" aria-required="1"/>
+                                   <span style="color:red" class="error" id="email_error">Enter valid email address</span>
+                               </div>
+                          </div>
+                          <div class="row" id="rowtxt3">
+                              <div class="col-md-10">
+                                 <input type="password" class="form-control" id="password" name="password" placeholder="New Password" aria-required="1"/>
+                                 <span style="color:red" class="error" id="password_error">Enter password atleast 5 character</span>
+                              </div>
+                          </div>
+                          <h4>Birthday</h4>
+                          <div class="row" id="rowtxt4"> 
+                              <div class="col-md-10">
+                                 <input type="date" class="form-control" id="dob" name="dob" placeholder="Dob" aria-required="1"/>
+                                 <span  style="color:red" class="error" id="date_error">Please select date</span>
+                              </div>
+                          </div>
+
+                          <div class="row" id="rowtxt5">
+                            <div class="form-group col-md-3">
+                              <h4 class="radio-inline">
+                                 <input type="radio" name="gender" value="female">Female
+                              </h4>
+                            </div>
+                            <div class="form-group col-md-5">
+                              <h4 class="radio-inline">
+                                  <input type="radio" name="gender" value="male" checked="">Male
+                              </h4>
+                            </div>
+                          </div>
+                        <div class="row" id="rowtxt6">
+                            <div class="col-md-6">
+                                    <p id="p1">By clicking Create an account, you agree to our Terms and confirm that you have read our Data Policy, 
+                                        including our Cookie Use Policy.
+                                        You may receive SMS message notifications from Facebook and can opt out at any time.
+                                    </p>
+                            </div>
+                        </div>
+                              
+                          <div class="row" id="rowtxt7">
+                              
+                              <div class="col-md-6">
+                                      <input type="submit" class="btn btn-success" name="submit" value="Sign Up">
+                              </div>
+
+                          </div>
+                               
+                     <?php echo form_close();?>
+                      
+
+<script>
+$(document).ready(function(){
+    $("#fname_error").hide();
+           $("#lname_error").hide();
+           $("#email_error").hide();
+           $("#password_error").hide();
+
+           var error_fname = false;
+           var error_lname = false;
+           var error_email = false;
+           var error_password = false;
+
+           $("#fname").focusout(function(){
+              check_fname();
+              });
+           $("#lname").focusout(function() {
+              check_lname();
+              });
+           $("#email").focusout(function() {
+              check_email();
+              });
+           $("#password").focusout(function() {
+              check_password();
+              });
+
+           function check_fname() {
+                var pattern = /^[a-zA-Z]*$/;
+                var fname = $("#fname").val();
+                if (pattern.test(fname) && fname !== '') {
+                $("#fname_error").hide();
+                $("#fname").css("border-bottom","2px solid #34F458");
+                } else {
+                $("#fname_error").html("Should contain only Characters");
+                $("#fname_error").show();
+                $("#fname").css("border-bottom","2px solid #F90A0A");
+                error_fname = true;
+                }
+                }
+
+           function check_lname() {
+                var pattern = /^[a-zA-Z]*$/;
+                var lname = $("#lname").val()
+                if (pattern.test(lname) && lname !== '') {
+                $("#lname_error").hide();
+                $("#lname").css("border-bottom","2px solid #34F458");
+                } else {
+                $("#lname_error").html("Should contain only Characters");
+                $("#lname_error").show();
+                $("#lname").css("border-bottom","2px solid #F90A0A");
+                error_lname = true;
+                }
+                }
+
+           function check_password() {
+                var password_length = $("#password").val().length;
+                if (password_length < 5) {
+                $("#password_error").html("Atleast 5 Characters");
+                $("#password_error").show();
+                $("#password").css("border-bottom","2px solid #F90A0A");
+                error_password = true;
+                } else {
+                $("#password_error").hide();
+                $("#password").css("border-bottom","2px solid #34F458");
+                }
+                }
+
+          function check_email() {
+                var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                var email = $("#email").val();
+                if(pattern.test(email) && email !== '') {
+                //$("#email_error").hide();
+                $("#email").css("border-bottom","2px solid #34F458");
+                } else {
+                $("#email_error").html("Invalid Email");
+                $("#email_error").show();
+                $("#email").css("border-bottom","2px solid #F90A0A");
+                error_email = true;
+                }
+                }
+
+       $("#signup").submit(function() {
+                error_fname = false;
+                error_lname = false;
+                error_email = false;
+                error_password = false;
+                check_fname();
+                check_lname();
+                check_email();
+                check_password();
+                if (error_fname === false && error_lname === false && error_email === false && error_password === false) {
+                alert("Registration Successfull");
+                return true;
+                } else {
+                alert("Please Fill the form Correctly");
+                return false;
+                }
+                });
+
+
+        
+   
+});
+</script>
